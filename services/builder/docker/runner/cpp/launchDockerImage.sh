@@ -1,0 +1,1 @@
+docker run -it --rm -v /Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/cpp/gRPC:/app grpc/cxx:latest bash

@@ -1,0 +1,12 @@
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/modelRunner/ModelRunner.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/grpc/Reply.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/grpc/PipeCouplerGrpc.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/modelRunner/model/Model.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/modelRunner/PipeCouplerService.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/grpc/ReplyOrBuilder.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/models/PmmlIris.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/grpc/Data.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/grpc/DataOrBuilder.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/modelRunner/PipeCoupler.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/grpc/PipeCouplerProto.java
+/Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/java/modelRunnerSpringBoot/src/main/java/com/tibco/modelops/modelRunner/ModelWrapper.java

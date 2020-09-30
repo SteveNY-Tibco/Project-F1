@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.tibco.modelops.grpc";
+option java_outer_classname = "PipeCouplerProto";
+
+package pipecoupler;
+
+service PipeCoupler {
+	rpc HandleData (Data) returns (Reply) {}
+}
+
+message Data {
+	string sender = 1;
+	string ID = 2;
+	string content = 3;
+}
+
+message Reply {
+	string sender = 1;
+	string ID = 2;
+	string content = 3;
+	bool status = 4;
+}

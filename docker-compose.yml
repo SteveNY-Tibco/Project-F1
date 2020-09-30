@@ -1,0 +1,86 @@
+version: '3.7'
+services:
+  proxy:
+    depends_on:
+      - servicelocator
+      - projectmgr
+      - builder
+      - deployer
+    restart: always
+    build:
+      dockerfile: Dockerfile
+      context: ./services/proxy
+    ports:
+      - '5408:80'
+  servicelocator:
+    image: bigoyang/service-locator:0.1.0
+    container_name: service-locator
+    restart: on-failure
+    ports:
+      - '10080:10080'
+      - '10081:10081'
+    volumes:
+      - /Users/steven/Applications/Project-F1:/home/f1
+      - /Users/steven/Applications/Project-F1/modelops/locator/:/home/locator
+    environment:
+      - FLOGO_APP_PROPS_ENV=auto
+      - System_BaseFolder=/home/f1
+      - System_ServiceLocatorIP=servicelocator
+  projectmgr:
+    depends_on:
+      - servicelocator
+    image: bigoyang/projectmgr:0.2.0
+    container_name: projectmgr
+    restart: on-failure
+    ports:
+      - '10090:10090'
+      - '10091:10091'
+    volumes:
+      - /Users/steven/Applications/Project-F1:/home/f1
+    environment:
+      - FLOGO_APP_PROPS_ENV=auto
+      - System_BaseFolder=/home/f1
+      - System_ServiceLocatorIP=servicelocator
+  builder:
+    depends_on:
+      - servicelocator
+      - projectmgr
+    image: bigoyang/builder:0.3.0
+    container_name: builder
+    ports:
+      - '10083:10083'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - /Users/steven/Applications/Project-F1:/home/f1
+      - ${FLOGO_HOME}/../data:/usr/flogo/data
+      - ${FLOGO_HOME}/../tools:/usr/flogo/tools
+      - ${FLOGO_HOME}/lib:/usr/flogo/lib
+      - ${FLOGO_HOME}:/usr/flogo/home
+      - ${FLOGO_HOME}/lib/core:/usr/wi/go
+      - ${FLOGO_HOME}/lib/ext:/usr/wi/ext
+      - ${FLOGO_HOME}/../services:/usr/flogo/services
+    environment:
+      - System_BaseFolder=/home/f1
+      - System_ServiceLocatorIP=servicelocator
+      - System_FlogoBuilder=builder-linux_amd64
+      - EULA_ACCEPT=YES
+      - FLOGO_APP_PROPS_ENV=auto
+      - FLOGO_HOME=/usr/flogo/home
+      - FLOGO_LIB_DIR=/usr/flogo/lib
+      - SERVICES_DIR=/usr/flogo/services
+  deployer:
+    depends_on:
+      - servicelocator
+      - projectmgr
+    image: flogo/deployer:0.1.0
+    container_name: deployer
+    ports:
+      - '10082:10082'
+    volumes:
+      - /Users/steven/.kube:/root/.kube
+      - /Users/steven/Applications/Project-F1:/home/f1
+    environment:
+      - FLOGO_APP_PROPS_ENV=auto
+      - System_BaseFolder=/home/f1
+      - System_BaseFolderExt=/Users/steven/Applications/Project-F1
+      - System_ServiceLocatorIP=servicelocator

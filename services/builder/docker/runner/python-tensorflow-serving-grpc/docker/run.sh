@@ -1,0 +1,1 @@
+docker run --name tensorflow-py-model-runner --env pipecoupler_port=5000 --env PythonModel.plugin=artifacts.inference --env PythonModel.URI=/fashion-mnist  -v /Users/steven/Applications/Dev-Ops/app/local-projects/fashion-mnist-tensorflow/artifacts:/app/artifacts -p 5000:5000 bigoyang/tensorflow-python-model:0.1.0

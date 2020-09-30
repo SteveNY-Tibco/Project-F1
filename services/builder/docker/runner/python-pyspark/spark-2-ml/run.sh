@@ -1,0 +1,1 @@
+docker run -v /Users/steven/Applications/Dev-Ops/src/github.com/TIBCOSoftware/labs-modelops-models/runner/python-pyspark/notebook:/home/jovyan/work -p 8889:8888 mdelapenya/spark-2-ml

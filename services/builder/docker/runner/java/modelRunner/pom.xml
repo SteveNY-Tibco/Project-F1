@@ -1,0 +1,186 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.tibco.modelops</groupId>
+  <artifactId>modelRunner</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>jar</packaging>
+
+  <name>modelRunner</name>
+  <url>http://maven.apache.org</url>
+
+  <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    <java.version>1.8</java.version>
+    <os-maven-plugin.version>1.6.1</os-maven-plugin.version>
+    <protobuf-maven-plugin.version>0.6.1</protobuf-maven-plugin.version>
+  </properties>
+
+ <dependencies>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-all -->
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-stub -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-stub</artifactId>
+    <version>1.29.0</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-core -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-core</artifactId>
+    <version>1.15.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-netty -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-netty</artifactId>
+    <version>1.15.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-protobuf -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-protobuf</artifactId>
+    <version>1.15.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-protobuf-lite -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-protobuf-lite</artifactId>
+    <version>1.15.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-services -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-services</artifactId>
+    <version>1.15.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/io.grpc/grpc-stub -->
+<dependency>
+    <groupId>io.grpc</groupId>
+    <artifactId>grpc-stub</artifactId>
+    <version>1.15.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind -->
+<dependency>
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-databind</artifactId>
+    <version>2.9.7</version>
+</dependency>
+	<dependency>
+		<groupId>org.codehaus.jackson</groupId>
+		<artifactId>jackson-mapper-asl</artifactId>
+		<version>1.9.13</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jpmml</groupId>
+		<artifactId>pmml-model</artifactId>
+		<version>1.4.15</version>
+	</dependency>
+	<dependency>
+		<groupId>org.jpmml</groupId>
+		<artifactId>pmml-evaluator</artifactId>
+		<version>1.4.15</version>
+	</dependency>
+<dependency>
+<groupId>com.sun.xml.bind</groupId>
+<artifactId>jaxb-impl</artifactId>
+<version>2.3.0.1</version>
+</dependency>
+<dependency>
+<groupId>javax.activation</groupId>
+<artifactId>activation</artifactId>
+<version>1.1.1</version>
+</dependency>
+<dependency>
+<groupId>com.sun.xml.bind</groupId>
+<artifactId>jaxb-core</artifactId>
+<version>2.3.0.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-api</artifactId>
+    <version>1.7.30</version>
+</dependency>
+<dependency>
+    <groupId>org.slf4j</groupId>
+    <artifactId>slf4j-jdk14</artifactId>
+    <version>1.7.25</version>
+</dependency>
+<!-- https://mvnrepository.com/artifact/org.apache.logging.log4j/log4j-slf4j-impl -->
+<dependency>
+    <groupId>org.apache.logging.log4j</groupId>
+    <artifactId>log4j-slf4j-impl</artifactId>
+    <version>2.1</version>
+    <scope>test</scope>
+</dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+ <build>
+ 	<plugins>
+		<plugin>
+    		<groupId>org.apache.maven.plugins</groupId>
+    		<artifactId>maven-dependency-plugin</artifactId>
+    		<executions>
+        		<execution>
+            		<id>copy-dependencies</id>
+            		<phase>prepare-package</phase>
+            		<goals>
+                		<goal>copy-dependencies</goal>
+            		</goals>
+            		<configuration>
+                		<outputDirectory>
+                    		../docker/libs
+                		</outputDirectory>
+            		</configuration>
+        		</execution>
+    		</executions>
+		</plugin>
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+        <archive>
+            <manifest>
+                <addClasspath>true</addClasspath>
+                <classpathPrefix>libs/</classpathPrefix>
+                <mainClass>
+                    com.tibco.modelops.modelRunner.ModelRunner
+                </mainClass>
+            </manifest>
+        </archive>
+    </configuration>
+</plugin>
+ 		<!-- plugin>
+          <groupId>org.springframework.boot</groupId>
+          <artifactId>spring-boot-maven-plugin</artifactId>
+          <executions>
+              <execution>
+                  <goals>
+                      <goal>repackage</goal>
+                  </goals>
+                  <configuration>
+                      <classifier>spring-boot</classifier>
+                      <mainClass>
+                        com.tibco.modelops.modelRunner.ModelRunner
+                      </mainClass>
+                  </configuration>
+              </execution>
+          </executions>
+ 		</plugin -->
+ 	</plugins>
+ </build>
+</project>
