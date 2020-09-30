@@ -3,7 +3,7 @@
   "containerDefinitions": [
     {
       "name": "proxy",
-      "image": "bigoyang/service-locator:0.1.0,
+      "image": "bigoyang/service-locator:0.1.0",
       "essential": true,
       "portMappings": [
         {
@@ -15,26 +15,26 @@
     },
     {
       "name": "servicelocator",
-      "image": "bigoyang/service-locator:0.1.0,
-      "hostname": "servicelocator,
+      "image": "bigoyang/service-locator:0.1.0",
+      "hostname": "servicelocator",
       "essential": false
     },
     {
       "name": "projectmgr",
-      "image": "bigoyang/projectmgr:0.2.0,
-      "hostname": "projectmgr,
+      "image": "bigoyang/projectmgr:0.2.0",
+      "hostname": "projectmgr",
       "essential": false
     },
     {
       "name": "builder",
-      "image": "bigoyang/builder:0.3.0,
-      "hostname": "builder,
+      "image": "bigoyang/builder:0.3.0",
+      "hostname": "builder",
       "essential": false
     },
     {
       "name": "deployer",
-      "image": "flogo/deployer:0.1.0,
-      "hostname": "deployer,
+      "image": "flogo/deployer:0.1.0",
+      "hostname": "deployer",
       "essential": false
     }  
   ]
