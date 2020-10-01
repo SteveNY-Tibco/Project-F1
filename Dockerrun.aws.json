@@ -17,25 +17,29 @@
       "name": "servicelocator",
       "image": "bigoyang/service-locator:0.1.0",
       "hostname": "servicelocator",
-      "essential": false
+      "essential": false,
+      "memory": 512
     },
     {
       "name": "projectmgr",
       "image": "bigoyang/projectmgr:0.2.0",
       "hostname": "projectmgr",
-      "essential": false
+      "essential": false,
+      "memory": 512
     },
     {
       "name": "builder",
       "image": "bigoyang/builder:0.3.0",
       "hostname": "builder",
-      "essential": false
+      "essential": false,
+      "memory": 512
     },
     {
       "name": "deployer",
       "image": "flogo/deployer:0.1.0",
       "hostname": "deployer",
-      "essential": false
+      "essential": false,
+      "memory": 512
     }  
   ]
 }
