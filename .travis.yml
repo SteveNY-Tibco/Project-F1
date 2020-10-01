@@ -2,11 +2,12 @@ sudo: required
 services:
   - docker
 
-before_install:
-  - docker build
-  
 script:
-  - 
+  - docker build -t bigoyang/F1_proxy:0.1.0 ./services/proxy
+  
+after_success:
+  - echo "$DOCKER_PASSWD" | docker login -u "$DOCKER_ID"
+  - docker push bigoyang/F1_proxy:0.1.0
 
 deploy:
   provider: elasticbeanstalk
