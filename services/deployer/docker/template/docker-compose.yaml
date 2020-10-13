@@ -1,0 +1,40 @@
+version: '3.7'
+services:
+  s0:
+    depends_on:
+      - pickle-iris-classifier01
+    image: bigoyang/pipeline-datasource:0.3.0
+    container_name: s0
+    restart: on-failure
+    ports:
+      - '9997:9997'
+    volumes:
+      - $temp.project.home$/input:/usr/local/Data
+    environment:
+      - FLOGO_APP_PROPS_ENV=auto
+      - pipecoupler_downstreamHosts=[pickle-iris-classifier01]
+      - pipecoupler_port=9997
+      - System_ID=$ID$
+      - System_Port==$Port$
+      - System_ServiceLocatorIP=$ServiceLocatorIP$
+  pickle-iris-classifier01:
+    depends_on:
+      - d0
+    image: bigoyang/python-model:0.4.0
+    container_name: pickle-iris-classifier01
+    restart: on-failure
+    volumes:
+      - $temp.project.home$/artifacts:/app/artifacts
+    environment:
+      - pipecoupler.downstreamHosts=[d0]
+      - pipecoupler.port=9997
+      - PythonModel.URI=/app/artifacts/iris-classifier.pkl
+      - PythonModel.plugin=artifacts.inference
+  d0:
+    image: bigoyang/pipeline-datadesination:0.2.0
+    container_name: d0
+    restart: on-failure
+    volumes:
+      - $temp.project.home$/output:/usr/local/Output
+    environment:
+      - .descriptor=C

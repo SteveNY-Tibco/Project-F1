@@ -72,11 +72,12 @@ services:
     depends_on:
       - servicelocator
       - projectmgr
-    image: flogo/deployer:0.1.0
+    image: bigoyang/deployer:0.2.0
     container_name: deployer
     ports:
       - '10082:10082'
     volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
       - /Users/steven/.kube:/root/.kube
       - /Users/steven/Applications/Project-F1:/home/f1
     environment:
