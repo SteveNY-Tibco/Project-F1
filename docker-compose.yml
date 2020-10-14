@@ -85,3 +85,8 @@ services:
       - System_BaseFolder=/home/f1
       - System_BaseFolderExt=/Users/steven/Applications/Project-F1
       - System_ServiceLocatorIP=servicelocator
+      - System_Network=project-f1_default
+      - System_ExternalEndpointIP=192.168.1.152
+networks:
+  default:
+    name: project-f1_default
